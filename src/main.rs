@@ -22,142 +22,24 @@ fn get_cmd(arr: &mut [[char; 3]; 3], usr: &mut bool) {
         .expect("Failed to read input");
     cmd = cmd.trim().to_string();
     if *usr == true {
-        if cmd == "00" {
-            if arr[0][0] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[0][0] = 'X';
-            }
-        } else if cmd == "01" {
-            if arr[0][1] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[0][1] = 'X';
-            }
-        } else if cmd == "02" {
-            if arr[0][2] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[0][2] = 'X';
-            }
-        } else if cmd == "10" {
-            if arr[1][0] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[1][0] = 'X';
-            }
-        } else if cmd == "11" {
-            if arr[1][1] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[1][1] = 'X';
-            }
-        } else if cmd == "12" {
-            if arr[1][2] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[1][2] = 'X';
-            }
-        } else if cmd == "20" {
-            if arr[2][0] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[2][0] = 'X';
-            }
-        } else if cmd == "21" {
-            if arr[2][1] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[2][1] = 'X';
-            }
-        } else if cmd == "22" {
-            if arr[2][2] != ' ' {
-                *usr = false;
-                println!("Incorrect input");
-            } else {
-                arr[2][2] = 'X';
-            }
-        } else {
+        if arr[cmd[0..1].parse::<usize>().unwrap()][cmd[1..2].parse::<usize>().unwrap()] != ' ' {
             *usr = false;
             println!("Incorrect input");
         }
-    } else {
-        if cmd == "00" {
-            if arr[0][0] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[0][0] = '0';
-            }
-        } else if cmd == "01" {
-            if arr[0][1] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[0][1] = '0';
-            }
-        } else if cmd == "02" {
-            if arr[0][2] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[0][2] = '0';
-            }
-        } else if cmd == "10" {
-            if arr[1][0] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[1][0] = '0';
-            }
-        } else if cmd == "11" {
-            if arr[1][1] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[1][1] = '0';
-            }
-        } else if cmd == "12" {
-            if arr[1][2] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[1][2] = '0';
-            }
-        } else if cmd == "20" {
-            if arr[2][0] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[2][0] = '0';
-            }
-        } else if cmd == "21" {
-            if arr[2][1] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[2][1] = '0';
-            }
-        } else if cmd == "22" {
-            if arr[2][2] != ' ' {
-                *usr = true;
-                println!("Incorrect input");
-            } else {
-                arr[2][2] = '0';
-            }
-        } else {
+        else {
+            arr[cmd[0..1].parse::<usize>().unwrap()][cmd[1..2].parse::<usize>().unwrap()] = 'X';
+        }
+    }
+    else {
+        if arr[cmd[0..1].parse::<usize>().unwrap()][cmd[1..2].parse::<usize>().unwrap()] != ' ' {
             *usr = true;
             println!("Incorrect input");
         }
-    }
+        else {
+            arr[cmd[0..1].parse::<usize>().unwrap()][cmd[1..2].parse::<usize>().unwrap()] = '0';
+        }
+    }   
+
     draw_board(*arr);
 }
 
